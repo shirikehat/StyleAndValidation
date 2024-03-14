@@ -15,7 +15,7 @@ namespace StyleAndValidation
             LogoutCommand = new Command(async () => { var ser = ((App)Application.Current).Services.GetService<AppServices>();  ser.Logout(); await AppShell.Current.GoToAsync("///MainPage");  });
         }
 
-        private void RoutingPages()
+         private static void RoutingPages()
         {
             Routing.RegisterRoute("Login", typeof(LoginPage));
             Routing.RegisterRoute("Register", typeof(RegisterPage));

@@ -15,7 +15,7 @@ namespace StyleAndValidation.ViewModels
     public class RegisterPageViewModel:ViewModelBase
     {
         #region Service
-        AppServices appServices;
+       readonly AppServices appServices;
         #endregion
 
         #region Fields
@@ -74,7 +74,7 @@ namespace StyleAndValidation.ViewModels
 
         private async Task RegisterUser()
         {
-           User registered=new User() { BirthDate=BirthDate, Email=Email, FullName=FullName, Password=Password, Username=Username};
+           User registered=new () { BirthDate=BirthDate, Email=Email, FullName=FullName, Password=Password, Username=Username};
             #region מסך טעינה
             //await AppShell.Current.GoToAsync("Loading");
             //var loading=AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;

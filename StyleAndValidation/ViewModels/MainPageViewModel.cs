@@ -11,13 +11,13 @@ namespace StyleAndValidation.ViewModels
 {
     public class MainPageViewModel:ViewModelBase
     {
-        AppServices appServices;
+      
 
         public ICommand LoginCommand { get; protected set; }
         public ICommand RegisterCommand {  get; protected set; }    
-        public MainPageViewModel(AppServices service)
+        public MainPageViewModel()
         {
-            appServices = service;
+            
             LoginCommand = new Command(async () => await AppShell.Current.GoToAsync("Login"));
             RegisterCommand = new Command(async () => await AppShell.Current.GoToAsync("Register"));
 

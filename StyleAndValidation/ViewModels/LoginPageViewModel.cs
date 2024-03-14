@@ -10,7 +10,7 @@ namespace StyleAndValidation.ViewModels
 {
     public class LoginPageViewModel:ViewModelBase
     {
-        AppServices appServices;
+       readonly AppServices appServices;
         #region Fields
 
         string username;
@@ -49,7 +49,7 @@ namespace StyleAndValidation.ViewModels
         public LoginPageViewModel(AppServices service)
         {
             appServices = service;
-            LoginCommand = new Command(async() => {bool success= await appServices.Login(Username, Password); if (success) await AppShell.Current.GoToAsync("///MyPage"); });
+            LoginCommand = new Command(async() => {bool success= await appServices.Login(Username, Password);  if (success) await AppShell.Current.GoToAsync("///MyPage"); });
             RegisterCommand = new Command(async () => { await AppShell.Current.GoToAsync("Register"); });
             ForgotPasswordCommand = new Command( () => { });
         }
