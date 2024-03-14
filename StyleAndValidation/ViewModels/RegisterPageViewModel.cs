@@ -80,17 +80,17 @@ namespace StyleAndValidation.ViewModels
             #endregion
             bool ok = await appServices.RegisterUserAsync(registered);
 
-           if (ok)
-            {
-                #region סגירת מסך טעינה
+          #region סגירת מסך טעינה
                 //await loading.Close();
                 #endregion
+           if (ok)
+            {
                 await AppShell.Current.DisplayAlert("הצלחה", "הנך מועבר.ת למסך הכניסה", "Ok");
                 await AppShell.Current.GoToAsync("Login");
             }
            else
             {
-                await loading.Close();
+              
                 await AppShell.Current.DisplayAlert("או ויי", "משהו לא טוב קרה", "Ok");
             }
           
