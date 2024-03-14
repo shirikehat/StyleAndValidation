@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StyleAndValidation.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:StyleAndValidation.ViewModels"
+    x:DataType="viewmodels:MainPageViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="VerticalStackLayout">
+                <Setter Property="Spacing" Value="20" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="HeightRequest" Value="70" />
+
+                <Setter Property="BackgroundColor" Value="LightBlue" />
+                <Setter Property="CornerRadius" Value="35" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <Label FontSize="Large" Text="מסך כניסה" />
+        <Button Command="{Binding LoginCommand}" Text="התחברות" />
+        <Button
+            BackgroundColor="BlueViolet"
+            Command="{Binding RegisterCommand}"
+            Text="הרשמה" />
+    </VerticalStackLayout>
+
+
+</ContentPage>

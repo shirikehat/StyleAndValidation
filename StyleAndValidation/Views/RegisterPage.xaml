@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StyleAndValidation.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:StyleAndValidation.ViewModels"
+    Title="הרשמה"
+    x:DataType="viewmodels:RegisterPageViewModel">
+
+    <!--  Styles  -->
+    <ContentPage.Resources>
+        <Style x:Key="lblStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+        <Style x:Key="entStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="PlaceholderColor" Value="Gray" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Teal" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+
+        <!--  Title  -->
+        <Frame
+            BackgroundColor="Teal"
+            HeightRequest="70"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="ברוכים הבאים"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Frame>
+
+        <!--  User Name  -->
+        <Grid RowDefinitions="auto,auto,*">
+            <Label Style="{StaticResource lblStyle}" Text="Username" />
+            <Entry
+                Grid.Row="1"
+                Style="{StaticResource entStyle}"
+                Text="{Binding Username}" />
+            <Label
+                Grid.Row="2"
+                IsVisible="{Binding ShowUserNameError}"
+                Text="{Binding UserNameErrorMEssage}" />
+        </Grid>
+        <!--  Password  -->
+        <Label Style="{StaticResource lblStyle}" Text="Password" />
+        <Entry
+            IsPassword="True"
+            Style="{StaticResource entStyle}"
+            Text="{Binding Password}" />
+        <!--  FullName  -->
+        <Label Style="{StaticResource lblStyle}" Text="Full Name" />
+        <Entry Style="{StaticResource entStyle}" Text="{Binding FullName}" />
+        <!--  Email  -->
+        <Label Style="{StaticResource lblStyle}" Text="Email" />
+        <Entry
+            Keyboard="Email"
+            Style="{StaticResource entStyle}"
+            Text="{Binding Email}" />
+        <!--  כפתור הרשמה  -->
+        <Button
+            Command="{Binding RegisterCommand}"
+            HorizontalOptions="FillAndExpand"
+            Style="{StaticResource btnStyle}"
+            Text="Register" />
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleAndValidation", "StyleAndValidation\StyleAndValidation.csproj", "{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910065E0-C1B2-4F8A-BB6B-44ACA048C0F3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA11425A-D138-4F42-9652-3BC728B42E22}
+	EndGlobalSection
+EndGlobal
