@@ -74,12 +74,17 @@ namespace StyleAndValidation.ViewModels
         private async Task RegisterUser()
         {
            User registered=new User() { BirthDate=BirthDate, Email=Email, FullName=FullName, Password=Password, Username=Username};
-            await AppShell.Current.GoToAsync("Loading");
-            var loading=AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;
-           bool ok= await appServices.RegisterUserAsync(registered);
+            #region מסך טעינה
+            //await AppShell.Current.GoToAsync("Loading");
+            //var loading=AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;
+            #endregion
+            bool ok = await appServices.RegisterUserAsync(registered);
+
            if (ok)
             {
-                await loading.Close();
+                #region סגירת מסך טעינה
+                //await loading.Close();
+                #endregion
                 await AppShell.Current.DisplayAlert("הצלחה", "הנך מועבר.ת למסך הכניסה", "Ok");
                 await AppShell.Current.GoToAsync("Login");
             }
