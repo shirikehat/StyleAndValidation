@@ -41,13 +41,17 @@ namespace StyleAndValidation.ViewModels
 
         #region Commands
         public ICommand LoginCommand { get; protected set; }
+        public ICommand RegisterCommand { get; protected set; }
+        public ICommand ForgotPasswordCommand { get; protected set; }
 
         #endregion
 
         public LoginPageViewModel(AppServices service)
         {
             appServices = service;
-            LoginCommand = new Command(() => { });
+            LoginCommand = new Command(async() => {bool success= await appServices.Login(Username, Password); if (success) await AppShell.Current.GoToAsync("///MyPage"); });
+            RegisterCommand = new Command(async () => { await AppShell.Current.GoToAsync("Register"); });
+            ForgotPasswordCommand = new Command( () => { });
         }
     }
 }

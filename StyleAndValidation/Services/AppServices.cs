@@ -30,7 +30,7 @@ namespace StyleAndValidation.Services
         public async Task<bool> Login(string username, string password)
         {
             loggedUser = null;
-            loggedUser= users.SingleOrDefault(x=>x.Username == username&&x.Password==password);
+            loggedUser= users.FirstOrDefault(x=>x.Username == username&&x.Password==password);
             await Task.Delay(1000); 
             return loggedUser!= null;   
         }
@@ -40,6 +40,11 @@ namespace StyleAndValidation.Services
             users.Add(u);
             await Task.Delay(3000);
             return true;    
+        }
+
+        internal void Logout()
+        {
+            loggedUser = null;
         }
     }
 }

@@ -4,12 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StyleAndValidation.Views"
+    x:Name="this"
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
         Title="מסך הבית"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
-        Shell.FlyoutBehavior="Disabled" />
+        Shell.FlyoutBehavior="Disabled"
+        Shell.FlyoutItemIsVisible="False" />
+    <FlyoutItem  Title="סוד כמוס" Icon="dotnet_bot.png">
+        <ShellContent
+            Title="דף הבית"
+            ContentTemplate="{DataTemplate local:MyPage}"
+            Route="MyPage" />
+        
+    </FlyoutItem>
+    <MenuItem Clicked="MenuItem_Clicked" Text="יציאה" />
 
 </Shell>

@@ -26,5 +26,21 @@
             Command="{Binding LoginCommand}"
             HorizontalOptions="FillAndExpand"
             Text="Log-In" />
+        <HorizontalStackLayout Spacing="200">
+            <Button
+                Command="{Binding RegisterCommand}"
+                Background="Transparent"
+                FontAttributes="Bold"
+                FontSize="15"
+                Text="הרשמה"
+                TextColor="black"
+                VerticalOptions="Center" />
+            <Button Command="{Binding ForgotPasswordCommand}"
+                Background="Transparent"
+                HorizontalOptions="End"
+                Text="שכחתי סיסמה"
+                TextColor="Black"
+                VerticalOptions="End" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

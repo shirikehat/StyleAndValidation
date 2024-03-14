@@ -17,6 +17,7 @@ namespace StyleAndValidation
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            //register views,services and viewModels
             builder.RegiserServices().RegisterViews().RegisterViewModels();
 
 #if DEBUG
@@ -34,6 +35,7 @@ namespace StyleAndValidation
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<RegisterPage>();
             builder.Services.AddTransient<LoadingPage>();
+            builder.Services.AddTransient<MyPage>();
 
             return builder;
         } 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -38,9 +39,7 @@ namespace StyleAndValidation.ViewModels
                     username = value;
                     ValidateUserName();
                     OnPropertyChanged();
-                    //בדיקה האם הכפתור צריך להיות מנוטרל או פעיל
-                    var cmd = RegisterCommand as Command;
-                    cmd.ChangeCanExecute();
+                   
                 }
             }
         }
@@ -68,6 +67,8 @@ namespace StyleAndValidation.ViewModels
         {
             appServices = service;
             RegisterCommand = new Command(async () => await RegisterUser(),()=>ValidateAll()) ;
+            Username = string.Empty;
+
         }
 
 
@@ -99,7 +100,12 @@ namespace StyleAndValidation.ViewModels
         #region Validation
         private bool ValidateUserName()
         {
-           bool ok=(!string.IsNullOrEmpty(Username)) && (Username.Length > 3);
+            #region שימוש בREGEX
+            /*string pattern = @"^[a-zA-Z](?=.*[0-9])(?=.*[a-z])[a-zA-Z0-9]{3,7}$";
+
+            bool ok = Regex.IsMatch(Username, pattern);*/
+            #endregion
+            bool ok =(!string.IsNullOrEmpty(Username)) && (Username.Length > 3);
             switch (ok)
             {
                 case false:
@@ -114,7 +120,9 @@ namespace StyleAndValidation.ViewModels
                     break;
 
             }
-           
+            //בדיקה האם הכפתור צריך להיות מנוטרל או פעיל
+            var cmd = RegisterCommand as Command;
+            cmd.ChangeCanExecute();
             return ok;
         }
 
@@ -122,7 +130,7 @@ namespace StyleAndValidation.ViewModels
 
         private bool ValidateAll()
         {
-            return ValidateUserName();
+            return !ShowUserNameError;
         }
 
         #endregion
