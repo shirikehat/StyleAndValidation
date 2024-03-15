@@ -13,30 +13,40 @@
         <BackButtonBehavior IsVisible="False" />
     </Shell.BackButtonBehavior>
 
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
         <!--  User Name  -->
 
-        <Label Text="Username" />
+        <Label Text="שם משתמש" />
         <Entry Text="{Binding Username}" />
         <!--  Password  -->
-        <Label Text="Password" />
-        <Entry IsPassword="True" Text="{Binding Password}" />
+        <Label Text="סיסמה" />
+        <Entry IsPassword="{Binding ShowPassword}" Text="{Binding Password}" />
+        <Button
+            Margin="0,-42,0,0"
+            Background="Transparent"
+            BorderColor="Transparent"
+            Command="{Binding ShowPasswordCommand}"
+            HorizontalOptions="End"
+            Text="הצג/הסתר סיסמה"
+            TextColor="Black"
+            ZIndex="2" />
         <Button
             Command="{Binding LoginCommand}"
             HorizontalOptions="FillAndExpand"
-            Text="Log-In" />
+            Text="התחבר" />
         <HorizontalStackLayout Spacing="200">
             <Button
-                Command="{Binding RegisterCommand}"
                 Background="Transparent"
+                Command="{Binding RegisterCommand}"
                 FontAttributes="Bold"
                 FontSize="15"
                 Text="הרשמה"
                 TextColor="black"
                 VerticalOptions="Center" />
-            <Button Command="{Binding ForgotPasswordCommand}"
+            <Button
                 Background="Transparent"
+                Command="{Binding ForgotPasswordCommand}"
                 HorizontalOptions="End"
                 Text="שכחתי סיסמה"
                 TextColor="Black"
