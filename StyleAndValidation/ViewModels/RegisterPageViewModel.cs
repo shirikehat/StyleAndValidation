@@ -12,14 +12,14 @@ using System.Windows.Input;
 
 namespace StyleAndValidation.ViewModels
 {
-    public class RegisterPageViewModel:ViewModelBase
+    public class RegisterPageViewModel : ViewModelBase
     {
         #region Service
-       readonly AppServices appServices;
+        readonly AppServices appServices;
         #endregion
 
         #region Fields
-        
+
         string username;
         string password;
         string fullName;
@@ -33,40 +33,43 @@ namespace StyleAndValidation.ViewModels
 
         #region Properties
         public string Username
-        { get => username;
-            set { if (username != value)
-                    { 
+        {
+            get => username;
+            set
+            {
+                if (username != value)
+                {
                     username = value;
                     ValidateUserName();
                     OnPropertyChanged();
-                   
+
                 }
             }
         }
 
 
-        public string Password { get=>password; set { password = value; OnPropertyChanged(); } }
-        public string FullName { get=>fullName; set { fullName = value; OnPropertyChanged(); } }
-        public string Email { get=>email; set { email = value; OnPropertyChanged(); } }
+        public string Password { get => password; set { password = value; OnPropertyChanged(); } }
+        public string FullName { get => fullName; set { fullName = value; OnPropertyChanged(); } }
+        public string Email { get => email; set { email = value; OnPropertyChanged(); } }
 
         public DateTime BirthDate { get => birthDate; set { birthDate = value; OnPropertyChanged(); } }
 
         #region Validation Properties
-        public bool ShowUserNameError { get=>showUserNameError;  set { showUserNameError = value; OnPropertyChanged(); } }
+        public bool ShowUserNameError { get => showUserNameError; set { showUserNameError = value; OnPropertyChanged(); } }
         public string UserNameErrorMEssage { get => userNameErrorMessage; set { userNameErrorMessage = value; OnPropertyChanged(); } }
         #endregion
-        
-    #endregion
 
-        
+        #endregion
+
+
         #region Commands
         public ICommand RegisterCommand { get; protected set; }
-        
+
         #endregion
         public RegisterPageViewModel(AppServices service)
         {
             appServices = service;
-            RegisterCommand = new Command(async () => await RegisterUser(),()=>ValidateAll()) ;
+            RegisterCommand = new Command(async () => await RegisterUser(), () => ValidateAll());
             Username = string.Empty;
 
         }
@@ -74,28 +77,28 @@ namespace StyleAndValidation.ViewModels
 
         private async Task RegisterUser()
         {
-           User registered=new () { BirthDate=BirthDate, Email=Email, FullName=FullName, Password=Password, Username=Username};
+            User registered = new() { BirthDate = BirthDate, Email = Email, FullName = FullName, Password = Password, Username = Username };
             #region מסך טעינה
-            //await AppShell.Current.GoToAsync("Loading");
-            //var loading=AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;
+            await AppShell.Current.GoToAsync("Loading");
+            var loading = AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;
             #endregion
             bool ok = await appServices.RegisterUserAsync(registered);
 
-          #region סגירת מסך טעינה
-                //await loading.Close();
-                await AppShell.Current.Navigation.PopModalAsync();
-                #endregion
-           if (ok)
+            #region סגירת מסך טעינה
+            //await loading.Close();
+            await AppShell.Current.Navigation.PopModalAsync();
+            #endregion
+            if (ok)
             {
                 await AppShell.Current.DisplayAlert("הצלחה", "הנך מועבר.ת למסך הכניסה", "Ok");
                 await AppShell.Current.GoToAsync("Login");
             }
-           else
+            else
             {
-              
+
                 await AppShell.Current.DisplayAlert("או ויי", "משהו לא טוב קרה", "Ok");
             }
-          
+
         }
 
         #region Validation
@@ -106,18 +109,18 @@ namespace StyleAndValidation.ViewModels
 
             bool ok = Regex.IsMatch(Username, pattern);*/
             #endregion
-            bool ok =(!string.IsNullOrEmpty(Username)) && (Username.Length > 3);
+            bool ok = (!string.IsNullOrEmpty(Username)) && (Username.Length > 3);
             switch (ok)
             {
                 case false:
-                //הצג הודעת שגיאה
-                ShowUserNameError = true;
-                UserNameErrorMEssage = "שם משתמש וסיסמה לא תקינים";
+                    //הצג הודעת שגיאה
+                    ShowUserNameError = true;
+                    UserNameErrorMEssage = "שם משתמש וסיסמה לא תקינים";
                     break;
                 case true:
                     //בטל הודעת שגיאה
-                ShowUserNameError = false;
-                UserNameErrorMEssage = string.Empty;
+                    ShowUserNameError = false;
+                    UserNameErrorMEssage = string.Empty;
                     break;
 
             }
@@ -127,7 +130,7 @@ namespace StyleAndValidation.ViewModels
             return ok;
         }
 
-        
+
 
         private bool ValidateAll()
         {
