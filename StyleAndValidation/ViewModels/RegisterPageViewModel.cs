@@ -83,6 +83,7 @@ namespace StyleAndValidation.ViewModels
 
           #region סגירת מסך טעינה
                 //await loading.Close();
+                await AppShell.Current.Navigation.PopModalAsync();
                 #endregion
            if (ok)
             {
